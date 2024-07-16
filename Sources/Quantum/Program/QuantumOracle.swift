@@ -24,6 +24,11 @@ public struct QuantumOracle: Codable, Hashable, LaTeXConvertible {
 
 extension Matrix {
     public init(_ oracle: QuantumOracle) {
-        fatalError("TODO")
+        switch oracle.type {
+        case .standard:
+            fatalError("TODO")
+        case .plusMinus:
+            fatalError("TODO")
+        }
     }
 }
