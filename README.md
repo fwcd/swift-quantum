@@ -29,14 +29,14 @@ swift run CoinFlip
 An example output would be:
 
 ```
-ClassicalRegister(rawValue: [true])
-ClassicalRegister(rawValue: [false])
-ClassicalRegister(rawValue: [true])
-ClassicalRegister(rawValue: [true])
-ClassicalRegister(rawValue: [true])
-ClassicalRegister(rawValue: [true])
-ClassicalRegister(rawValue: [false])
-ClassicalRegister(rawValue: [false])
+[true]
+[true]
+[true]
+[false]
+[false]
+[true]
+[false]
+[true]
 ```
 
 More examples can be found under [`Snippets`](Snippets).

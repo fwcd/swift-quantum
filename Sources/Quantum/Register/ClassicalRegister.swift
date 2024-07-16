@@ -8,7 +8,7 @@
 import Foundation
 
 /// A classical state, i.e. an array of bits.
-public struct ClassicalRegister: Hashable, Codable, RawRepresentable {
+public struct ClassicalRegister: Hashable, Codable, RawRepresentable, CustomStringConvertible {
     public private(set) var rawValue: [Bool]
     
     /// Creates a classical state from the given bits.
@@ -29,6 +29,10 @@ public struct ClassicalRegister: Hashable, Codable, RawRepresentable {
     /// The integer representation of the register.
     public var value: Int {
         rawValue.reduce(0) { ($0 << 1) | ($1 ? 1 : 0) }
+    }
+
+    public var description: String {
+        String(describing: rawValue)
     }
     
     /// Creates a classical state from the given value with the given number of bits.
