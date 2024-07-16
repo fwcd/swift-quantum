@@ -11,7 +11,6 @@ A library for simulating quantum computations in Swift.
 import Quantum
 
 let program = QuantumProgram(
-    initialState: [false],
     operations: [
         .init(.transform(.hadamard)),
         .init(.measure),
@@ -19,7 +18,7 @@ let program = QuantumProgram(
 )
 
 for _ in 0..<8 {
-    print(try program.measuredState)
+    print(try program.measuredState(for: [false]))
 }
 ```
 
