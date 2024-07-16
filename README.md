@@ -5,7 +5,7 @@ A library for simulating quantum computations in Swift.
 The library is split into two modules:
 
 - `Quantum`, the main library
-- `QuantumBuilder`, a result builder-based DSL (that leverages modern Swift features like variadic generics/parameter packs)
+- `QuantumBuilder`, a result builder-based DSL for expressing quantum compuations
 
 `QuantumBuilder` re-exports `Quantum`, so you only have to import one of the two, depending on what you need.
 
