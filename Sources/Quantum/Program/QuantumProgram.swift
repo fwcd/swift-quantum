@@ -38,6 +38,11 @@ public struct QuantumProgram: Hashable, Codable {
         try finalState(for: input).measure()
     }
 
+    /// Concatenates the given two programs.
+    public static func +(lhs: Self, rhs: Self) -> Self {
+        Self(operations: lhs.operations + rhs.operations)
+    }
+
     /// Clears the program's operations.
     public mutating func clear() {
         operations = []
