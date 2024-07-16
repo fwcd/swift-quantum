@@ -8,7 +8,7 @@
 import Foundation
 
 /// An expression representing a complex number.
-public indirect enum ComplexExpression: Hashable, Codable {
+public indirect enum ComplexExpression: Hashable, Codable, LaTeXConvertible {
     case int(Int)
     case complex(Complex)
     case squareRoot(ComplexExpression)
