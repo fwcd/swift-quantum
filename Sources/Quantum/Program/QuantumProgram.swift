@@ -43,6 +43,11 @@ public struct QuantumProgram: Hashable, Codable {
         Self(operations: lhs.operations + rhs.operations)
     }
 
+    /// Appends the given program.
+    public static func +=(lhs: inout Self, rhs: Self) {
+        lhs.operations += rhs.operations
+    }
+
     /// Clears the program's operations.
     public mutating func clear() {
         operations = []
