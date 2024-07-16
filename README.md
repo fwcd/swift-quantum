@@ -2,8 +2,12 @@
 
 A library for simulating quantum computations in Swift.
 
-> [!IMPORTANT]
-> This library is still work-in-progress, so the API may change. Currently it is primarily geared towards use in a UI, hence the identifiable operations, but a rewrite to a more ergonomic API for scripting is planned.
+The library is split into two modules:
+
+- `Quantum`, the main library
+- `QuantumBuilder`, a result builder-based DSL (that leverages modern Swift features like variadic generics/parameter packs)
+
+`QuantumBuilder` re-exports `Quantum`, so you only have to import one of the two, depending on what you need.
 
 ## Example
 
