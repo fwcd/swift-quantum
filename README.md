@@ -26,4 +26,17 @@ To try this example, run
 swift run CoinFlip
 ```
 
+An example output would be:
+
+```
+ClassicalRegister(rawValue: [true])
+ClassicalRegister(rawValue: [false])
+ClassicalRegister(rawValue: [true])
+ClassicalRegister(rawValue: [true])
+ClassicalRegister(rawValue: [true])
+ClassicalRegister(rawValue: [true])
+ClassicalRegister(rawValue: [false])
+ClassicalRegister(rawValue: [false])
+```
+
 More examples can be found under [`Snippets`](Snippets).
