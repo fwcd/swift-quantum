@@ -98,3 +98,21 @@ public struct QuantumRegister: Hashable, Codable, RawRepresentable {
         }
     }
 }
+
+extension Matrix {
+    /// Initializes the matrix with the given row states.
+    init(rows: [QuantumRegister]) {
+        precondition(!rows.isEmpty, "Cannot construct empty quantum transformation")
+        precondition(rows.allSatisfy { $0.dimension == rows.count }, "Rows (i.e. mapped basis states) of quantum transformation are not of equal dimension: \(rows.map(\.dimension))")
+
+        self.init(rows: rows.map(\.rawValue))
+    }
+
+    /// Initializes the matrix with the given column states.
+    init(columns: [QuantumRegister]) {
+        precondition(!columns.isEmpty, "Cannot construct empty quantum transformation")
+        precondition(columns.allSatisfy { $0.dimension == columns.count }, "Columns (i.e. mapped basis states) of quantum transformation are not of equal dimension: \(columns.map(\.dimension))")
+
+        self.init(columns: columns.map(\.rawValue))
+    }
+}

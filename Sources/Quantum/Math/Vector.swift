@@ -86,3 +86,15 @@ extension Vector: Sequence {
         rawValue.makeIterator()
     }
 }
+
+extension Matrix {
+    /// Initializes the matrix with the given row vectors.
+    public init(rows: [Vector]) {
+        self.init(rawValue: rows.map(\.rawValue))
+    }
+
+    /// Initializes the matrix with the given column vectors.
+    public init(columns: [Vector]) {
+        self = Self(rows: columns).transpose
+    }
+}
