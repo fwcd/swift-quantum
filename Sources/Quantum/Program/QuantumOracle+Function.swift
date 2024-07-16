@@ -16,12 +16,12 @@ extension QuantumOracle {
         // We use a trick to count the arguments in the type parameter pack (since we cannot just call `.count` somewhere)
         // This is adapted from https://stackoverflow.com/a/77349310
         // This might become easier in Swift 6 with pack iteration: https://www.swift.org/blog/pack-iteration/
-        var inputBits: Int = 0
-        _ = (repeat ((each B).self, inputBits += 1))
+        var inputBitCount: Int = 0
+        _ = (repeat ((each B).self, inputBitCount += 1))
 
         var allValues: [[Bool]] = []
-        for binaryInput in 0..<(1 << inputBits) {
-            let inputRegister = ClassicalRegister(value: binaryInput, count: inputBits)
+        for binaryInput in 0..<(1 << inputBitCount) {
+            let inputRegister = ClassicalRegister(value: binaryInput, count: inputBitCount)
 
             var i = 0
             let output = function(repeat ((each B)(booleanValue: inputRegister[i]), i += 1).0)
