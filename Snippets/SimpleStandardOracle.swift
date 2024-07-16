@@ -1,7 +1,7 @@
 import QuantumBuilder
 
 let program = QuantumProgram {
-    // A standard oracle that negates the input.
+    // A standard oracle that encodes NOT.
     // Note that this operates on 2 qubits.
     Oracle { (b: Bool) in
         !b

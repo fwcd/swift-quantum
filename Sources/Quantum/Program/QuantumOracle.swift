@@ -56,7 +56,15 @@ extension Matrix {
                 }
             }
         case .plusMinus:
-            fatalError("TODO")
+            // TODO: Should this be a thrown error instead?
+            precondition(oracle.outputBitCount == 1, "Plus-minus encoding is only supported for oracles with 1 output bit (i.e. those encoding boolean-valued functions)")
+
+            let size = 1 << oracle.inputBitCount
+            self = .zero(size, size)
+
+            for b in 0..<size {
+                self[b, b] = oracle.values[b][0] ? -1 : 1
+            }
         }
     }
 }
