@@ -8,12 +8,12 @@ A library for simulating quantum computations in Swift.
 ## Example
 
 ```swift
-import Quantum
+import QuantumBuilder
 
-let program: QuantumProgram = [
-    .init(.transform(.hadamard)),
-    .init(.measure),
-]
+let program = QuantumProgram {
+    Hadamard()
+    Measure()
+}
 
 for _ in 0..<8 {
     print(try program.measuredState(for: [false]))
