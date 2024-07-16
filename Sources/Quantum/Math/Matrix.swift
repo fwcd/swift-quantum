@@ -13,12 +13,19 @@ public struct Matrix: Hashable, Codable, RawRepresentable {
         }
     }
     
+    /// The number of rows in the matrix.
     public var height: Int {
         rawValue.count
     }
     
+    /// The number of columns in the matrix.
     public var width: Int {
         rawValue[0].count
+    }
+
+    /// The transpose of the matrix.
+    public var transpose: Self {
+        Self((0..<width).map { i in rawValue.map { $0[i] } })
     }
     
     public init(rawValue: [[Complex]] = []) {
