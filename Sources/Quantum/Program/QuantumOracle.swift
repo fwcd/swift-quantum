@@ -45,7 +45,16 @@ extension Matrix {
     public init(_ oracle: QuantumOracle) {
         switch oracle.type {
         case .standard:
-            fatalError("TODO")
+            let size = 1 << (oracle.inputBitCount + oracle.outputBitCount)
+            self = .zero(size, size)
+
+            for b in 0..<(1 << oracle.inputBitCount) {
+                for c in 0..<(1 << oracle.outputBitCount) {
+                    let input = (b << oracle.inputBitCount) | c
+                    let output = (b << oracle.inputBitCount) | (c ^ ClassicalRegister(oracle.values[b]).value)
+                    self[output, input] = 1
+                }
+            }
         case .plusMinus:
             fatalError("TODO")
         }
