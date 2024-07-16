@@ -17,6 +17,7 @@ public indirect enum QuantumTransformationExpression: Hashable, Codable {
     case scale(ComplexExpression, QuantumTransformationExpression)
     case kron(QuantumTransformationExpression, QuantumTransformationExpression)
     case kronPow(QuantumTransformationExpression, Int)
+    case oracle(QuantumOracle)
     case matrix(Matrix)
     
     /// Aggregates Kronecker factors.
@@ -57,7 +58,7 @@ public indirect enum QuantumTransformationExpression: Hashable, Codable {
     /// The precedence of the operation.
     private var precedence: Int {
         switch self {
-        case .identity, .hadamard, .x, .y, .z, .kronPow, .matrix: 100
+        case .identity, .hadamard, .x, .y, .z, .kronPow, .oracle, .matrix: 100
         case .scale: 50
         case .kron: 10
         }
@@ -74,6 +75,7 @@ public indirect enum QuantumTransformationExpression: Hashable, Codable {
         case let .scale(factor, operand): "\(factor.latex) \(parenthesizedLatex(operand))"
         case let .kron(lhs, rhs): "\(parenthesizedLatex(lhs)) \\otimes \(parenthesizedLatex(rhs))"
         case let .kronPow(lhs, rhs): "{\(parenthesizedLatex(lhs))}^{\\otimes \(rhs)}"
+        case let .oracle(oracle): oracle.latex
         case let .matrix(matrix): "\\begin{pmatrix}\(matrix.map { $0.map { "\($0)" }.joined(separator: " & ") }.joined(separator: " \\\\ "))\\end{pmatrix}"
         }
     }
@@ -101,6 +103,7 @@ extension Matrix {
         case let .scale(factor, operand): self = Complex(factor) * Matrix(operand)
         case let .kron(lhs, rhs): self = Matrix(lhs).kron(Matrix(rhs))
         case let .kronPow(lhs, rhs): self = Matrix(lhs).kronPow(rhs)
+        case let .oracle(oracle): self = Matrix(oracle)
         case let .matrix(matrix): self = matrix
         }
     }
