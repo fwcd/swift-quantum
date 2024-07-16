@@ -20,6 +20,17 @@ final class MatrixTests: XCTestCase {
             [0, 0, 0, 0],
         ])
     }
+
+    func testTranspose() {
+        assert(Matrix([
+            [1, 2, 3],
+            [4, 5, 6],
+        ]).transpose, equals: [
+            [1, 4],
+            [2, 5],
+            [3, 6],
+        ])
+    }
     
     func testIdentity() {
         assert(.identity(1), equals: [
