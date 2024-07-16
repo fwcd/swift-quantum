@@ -27,5 +27,9 @@ let package = Package(
             name: "QuantumTests",
             dependencies: ["Quantum"]
         ),
+        .testTarget(
+            name: "QuantumBuilderTests",
+            dependencies: ["Quantum", "QuantumBuilder"]
+        ),
     ]
 )

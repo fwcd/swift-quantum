@@ -1,5 +1,3 @@
-import Quantum
-
 @resultBuilder
 public struct QuantumProgramBuilder {
     public static func buildBlock(_ programs: QuantumProgram...) -> QuantumProgram {
