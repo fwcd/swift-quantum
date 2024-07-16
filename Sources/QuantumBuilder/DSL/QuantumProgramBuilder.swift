@@ -1,5 +1,7 @@
 @resultBuilder
 public struct QuantumProgramBuilder {
+    private init() {}
+
     // We use Swift 5.9's variadic generics here (parameter packs)
 
     public static func buildBlock<each C: QuantumProgramComponent>(_ component: repeat each C) -> QuantumProgram {
