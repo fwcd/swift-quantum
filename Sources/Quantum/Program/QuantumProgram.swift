@@ -43,3 +43,9 @@ public struct QuantumProgram: Hashable, Codable {
         operations = []
     }
 }
+
+extension QuantumProgram: ExpressibleByArrayLiteral {
+    public init(arrayLiteral elements: Identified<QuantumOperation>...) {
+        self.init(operations: elements)
+    }
+}

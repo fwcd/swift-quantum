@@ -10,12 +10,10 @@ A library for simulating quantum computations in Swift.
 ```swift
 import Quantum
 
-let program = QuantumProgram(
-    operations: [
-        .init(.transform(.hadamard)),
-        .init(.measure),
-    ]
-)
+let program: QuantumProgram = [
+    .init(.transform(.hadamard)),
+    .init(.measure),
+]
 
 for _ in 0..<8 {
     print(try program.measuredState(for: [false]))
