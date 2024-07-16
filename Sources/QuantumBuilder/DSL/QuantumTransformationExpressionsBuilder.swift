@@ -7,4 +7,8 @@ public struct QuantumTransformationExpressionsBuilder {
         repeat expressions.append((each components).expression)
         return expressions
     }
+
+    public static func buildBlock(_ components: [QuantumTransformationExpression]...) -> [QuantumTransformationExpression] {
+        components.flatMap { $0 }
+    }
 }
