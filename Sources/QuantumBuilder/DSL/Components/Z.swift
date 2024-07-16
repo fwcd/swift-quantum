@@ -1,6 +1,6 @@
-public struct Z: QuantumProgramComponent {
-    public var program: QuantumProgram {
-        [.init(.transform(.z))]
+public struct Z: QuantumTransformationExpressionComponent {
+    public var expression: QuantumTransformationExpression {
+        .z
     }
 
     public init() {}

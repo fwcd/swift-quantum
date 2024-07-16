@@ -1,6 +1,6 @@
-public struct Oracle: QuantumProgramComponent {
-    public var program: QuantumProgram {
-        [.init(.transform(.oracle(wrappedOracle)))]
+public struct Oracle: QuantumTransformationExpressionComponent {
+    public var expression: QuantumTransformationExpression {
+        .oracle(wrappedOracle)
     }
 
     private let wrappedOracle: QuantumOracle

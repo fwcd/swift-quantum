@@ -13,11 +13,3 @@ extension Identified<QuantumOperation>: QuantumProgramComponent {
 extension QuantumOperation: QuantumProgramComponent {
     public var program: QuantumProgram { QuantumProgram(operations: [.init(self)]) }
 }
-
-extension QuantumTransformationExpression: QuantumProgramComponent {
-    public var program: QuantumProgram { QuantumProgram(operations: [.init(.transform(self))]) }
-}
-
-extension Matrix: QuantumProgramComponent {
-    public var program: QuantumProgram { QuantumProgram(operations: [.init(.transform(.matrix(self)))]) }
-}

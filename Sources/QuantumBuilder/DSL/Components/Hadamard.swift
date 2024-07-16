@@ -1,6 +1,6 @@
-public struct Hadamard: QuantumProgramComponent {
-    public var program: QuantumProgram {
-        [.init(.transform(.hadamard))]
+public struct Hadamard: QuantumTransformationExpressionComponent {
+    public var expression: QuantumTransformationExpression {
+        .hadamard
     }
 
     public init() {}
