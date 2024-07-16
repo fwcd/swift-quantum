@@ -3,7 +3,7 @@
 A library for simulating quantum computations in Swift.
 
 > [!IMPORTANT]
-> This library is still work-in-progress, so the API may change.
+> This library is still work-in-progress, so the API may change. Currently it is primarily geared towards use in a UI, hence the identifiable operations, but a rewrite to a more ergonomic API for scripting is planned.
 
 ## Example
 
