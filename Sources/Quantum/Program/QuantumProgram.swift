@@ -8,7 +8,7 @@
 /// A quantum program.
 public struct QuantumProgram: Hashable, Codable {
     public var initialState: ClassicalRegister
-    public var operations: [Identified<QuantumOperation>] = []
+    public var operations: [Identified<QuantumOperation>]
     
     /// The intermediate and final states while running the quantum program.
     public var states: [QuantumRegister] {
@@ -39,7 +39,15 @@ public struct QuantumProgram: Hashable, Codable {
             try finalState.measure()
         }
     }
-    
+
+    public init(
+        initialState: ClassicalRegister,
+        operations: [Identified<QuantumOperation>] = []
+    ) {
+        self.initialState = initialState
+        self.operations = operations
+    }
+
     /// Clears the program's operations and initial values.
     public mutating func clear() {
         initialState = .zero(count: initialState.count)
