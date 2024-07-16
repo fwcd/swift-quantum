@@ -49,6 +49,12 @@ public struct QuantumProgram: Hashable, Codable {
     }
 }
 
+extension QuantumProgram: Sequence {
+    public func makeIterator() -> [Identified<QuantumOperation>].Iterator {
+        operations.makeIterator()
+    }
+}
+
 extension QuantumProgram: ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: Identified<QuantumOperation>...) {
         self.init(operations: elements)
