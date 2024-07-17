@@ -13,11 +13,7 @@ extension QuantumOracle {
         _ function: (repeat each B) -> (repeat each C)
     ) where repeat each B: BooleanIsomorphic,
             repeat each C: BooleanIsomorphic {
-        // We use a trick to count the arguments in the type parameter pack (since we cannot just call `.count` somewhere)
-        // This is adapted from https://stackoverflow.com/a/77349310
-        // This might become easier in Swift 6 with pack iteration: https://www.swift.org/blog/pack-iteration/
-        var inputBitCount: Int = 0
-        _ = (repeat ((each B).self, inputBitCount += 1))
+        let inputBitCount = inputCount(of: function)
 
         var allValues: [[Bool]] = []
         for binaryInput in 0..<(1 << inputBitCount) {
