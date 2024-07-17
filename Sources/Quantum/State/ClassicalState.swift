@@ -1,5 +1,5 @@
 //
-//  ClassicalRegister.swift
+//  ClassicalState.swift
 //  Quantum
 //
 //  Created on 13.06.24
@@ -8,7 +8,7 @@
 import Foundation
 
 /// A classical state, i.e. an array of bits.
-public struct ClassicalRegister: Hashable, Codable, RawRepresentable, CustomStringConvertible {
+public struct ClassicalState: Hashable, Codable, RawRepresentable, CustomStringConvertible {
     public private(set) var rawValue: [Bool]
     
     /// Creates a classical state from the given bits.
@@ -93,13 +93,13 @@ public struct ClassicalRegister: Hashable, Codable, RawRepresentable, CustomStri
     }
 }
 
-extension ClassicalRegister: ExpressibleByArrayLiteral {
+extension ClassicalState: ExpressibleByArrayLiteral {
     public init(arrayLiteral elements: Bool...) {
         self.init(elements)
     }
 }
 
-extension ClassicalRegister: Sequence {
+extension ClassicalState: Sequence {
     public func makeIterator() -> [Bool].Iterator {
         rawValue.makeIterator()
     }

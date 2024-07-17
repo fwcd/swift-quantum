@@ -1,5 +1,5 @@
 //
-//  QuantumRegister.swift
+//  QuantumState.swift
 //  Quantum
 //
 //  Created on 13.06.24
@@ -8,7 +8,7 @@
 import Foundation
 
 /// A quantum state, i.e. a complex probability distribution.
-public struct QuantumRegister: Hashable, Codable, RawRepresentable {
+public struct QuantumState: Hashable, Codable, RawRepresentable {
     public private(set) var rawValue: Vector {
         didSet {
             checkInvariants()
@@ -42,15 +42,15 @@ public struct QuantumRegister: Hashable, Codable, RawRepresentable {
     }
     
     /// Creates a quantum basis state from the given classical state.
-    public init(_ register: ClassicalRegister) {
-        var rawValue = Vector.zero(count: 1 << register.count)
-        rawValue[register.value] = 1
+    public init(_ state: ClassicalState) {
+        var rawValue = Vector.zero(count: 1 << state.count)
+        rawValue[state.value] = 1
         self.init(rawValue: rawValue)
     }
     
     /// Creates a quantum basis state from the given value and qubit count.
     public init(value: Int, qubitCount: Int) {
-        self.init(ClassicalRegister(value: value, count: qubitCount))
+        self.init(ClassicalState(value: value, count: qubitCount))
     }
     
     /// Creates the zero basis state with the given number of qubits.
@@ -69,15 +69,15 @@ public struct QuantumRegister: Hashable, Codable, RawRepresentable {
     }
     
     /// Measures the quantum state (nondeterministically).
-    public func measure() -> ClassicalRegister {
+    public func measure() -> ClassicalState {
         var x = Double.random(in: 0..<1)
         for (i, amplitude) in rawValue.enumerated() {
             x -= amplitude.magnitudeSquared
             if x <= 0 {
-                return ClassicalRegister(value: i, count: qubitCount)
+                return ClassicalState(value: i, count: qubitCount)
             }
         }
-        return ClassicalRegister(value: dimension - 1, count: qubitCount)
+        return ClassicalState(value: dimension - 1, count: qubitCount)
     }
     
     /// Applies the given quantum state transformation.
@@ -101,7 +101,7 @@ public struct QuantumRegister: Hashable, Codable, RawRepresentable {
 
 extension Matrix {
     /// Initializes the matrix with the given row states.
-    init(rows: [QuantumRegister]) {
+    init(rows: [QuantumState]) {
         precondition(!rows.isEmpty, "Cannot construct empty quantum transformation")
         precondition(rows.allSatisfy { $0.dimension == rows.count }, "Rows (i.e. mapped basis states) of quantum transformation are not of equal dimension: \(rows.map(\.dimension))")
 
@@ -109,7 +109,7 @@ extension Matrix {
     }
 
     /// Initializes the matrix with the given column states.
-    init(columns: [QuantumRegister]) {
+    init(columns: [QuantumState]) {
         precondition(!columns.isEmpty, "Cannot construct empty quantum transformation")
         precondition(columns.allSatisfy { $0.dimension == columns.count }, "Columns (i.e. mapped basis states) of quantum transformation are not of equal dimension: \(columns.map(\.dimension))")
 

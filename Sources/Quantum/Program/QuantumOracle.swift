@@ -51,7 +51,7 @@ extension Matrix {
             for b in 0..<(1 << oracle.inputBitCount) {
                 for c in 0..<(1 << oracle.outputBitCount) {
                     let input = (b << oracle.outputBitCount) | c
-                    let bit = ClassicalRegister(oracle.values[b]).value
+                    let bit = ClassicalState(oracle.values[b]).value
                     precondition(bit == 0 || bit == 1)
                     let output = (b << oracle.outputBitCount) | (c ^ bit)
                     self[output, input] = 1

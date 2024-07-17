@@ -21,10 +21,10 @@ extension QuantumOracle {
 
         var allValues: [[Bool]] = []
         for binaryInput in 0..<(1 << inputBitCount) {
-            let inputRegister = ClassicalRegister(value: binaryInput, count: inputBitCount)
+            let input = ClassicalState(value: binaryInput, count: inputBitCount)
 
             var i = 0
-            let output = function(repeat ((each B)(booleanValue: inputRegister[i]), i += 1).0)
+            let output = function(repeat ((each B)(booleanValue: input[i]), i += 1).0)
             
             var outputValues: [Bool] = []
             repeat outputValues.append((each output).booleanValue)

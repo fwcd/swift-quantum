@@ -15,8 +15,8 @@ public struct QuantumProgram: Hashable, Codable {
 
     /// The initial, intermediate and final states while running the quantum
     /// program on the given input. This list is never empty.
-    public func states(for input: ClassicalRegister) throws -> [QuantumRegister] {
-        try operations.scan(QuantumRegister(input)) { state, operation in
+    public func states(for input: ClassicalState) throws -> [QuantumState] {
+        try operations.scan(QuantumState(input)) { state, operation in
             if case let .transform(transformation) = operation.wrappedValue,
                 transformation.qubitCount != state.qubitCount {
                 throw QuantumProgramError(
@@ -29,12 +29,12 @@ public struct QuantumProgram: Hashable, Codable {
     }
     
     /// The state after running the quantum program on the given input.
-    public func finalState(for input: ClassicalRegister) throws -> QuantumRegister {
+    public func finalState(for input: ClassicalState) throws -> QuantumState {
         try states(for: input).last!
     }
     
     /// A measurement of the state after running the quantum program on the given input.
-    public func measuredState(for input: ClassicalRegister) throws -> ClassicalRegister {
+    public func measuredState(for input: ClassicalState) throws -> ClassicalState {
         try finalState(for: input).measure()
     }
 
