@@ -27,5 +27,14 @@ final class QuantumOracleTests: XCTestCase {
             [0, 0, 0, 0, 0, 0, 1, 0],
         ])
     }
+
+    func testPlusMinusEncoding() {
+        assert(Matrix(QuantumOracle(type: .plusMinus) { $0 && $1 }), equals: [
+            [1, 0, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, -1],
+        ])
+    }
 }
 
