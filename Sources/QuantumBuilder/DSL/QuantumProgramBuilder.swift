@@ -9,6 +9,22 @@ public struct QuantumProgramBuilder {
         repeat program += (each component).program
         return program
     }
+
+    public static func buildArray(_ components: [QuantumProgram]) -> QuantumProgram {
+        QuantumProgram(operations: components.flatMap(\.operations))
+    }
+
+    public static func buildEither(first component: QuantumProgram) -> QuantumProgram {
+        component
+    }
+
+    public static func buildEither(second component: QuantumProgram) -> QuantumProgram {
+        component
+    }
+
+    public static func buildOptional(_ component: QuantumProgram?) -> QuantumProgram {
+        component ?? .init()
+    }
 }
 
 extension QuantumProgram {

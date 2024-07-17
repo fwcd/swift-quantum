@@ -11,4 +11,20 @@ public struct QuantumTransformationExpressionsBuilder {
     public static func buildBlock(_ components: [QuantumTransformationExpression]...) -> [QuantumTransformationExpression] {
         components.flatMap { $0 }
     }
+
+    public static func buildArray(_ components: [[QuantumTransformationExpression]]) -> [QuantumTransformationExpression] {
+        components.flatMap { $0 }
+    }
+
+    public static func buildEither(first component: [QuantumTransformationExpression]) -> [QuantumTransformationExpression] {
+        component
+    }
+
+    public static func buildEither(second component: [QuantumTransformationExpression]) -> [QuantumTransformationExpression] {
+        component
+    }
+
+    public static func buildOptional(_ component: [QuantumTransformationExpression]?) -> [QuantumTransformationExpression] {
+        component ?? []
+    }
 }
