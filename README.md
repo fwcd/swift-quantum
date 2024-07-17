@@ -1,5 +1,8 @@
 # Swift Quantum
 
+[![Build](https://github.com/fwcd/swift-quantum/actions/workflows/build.yml/badge.svg)](https://github.com/fwcd/swift-quantum/actions/workflows/build.yml)
+[![Docs](https://github.com/fwcd/swift-quantum/actions/workflows/docs.yml/badge.svg)](https://fwcd.github.io/swift-quantum/documentation/quantum)
+
 A library for simulating quantum computations in Swift.
 
 The library is split into two modules:
