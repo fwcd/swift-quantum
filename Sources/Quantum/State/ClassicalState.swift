@@ -10,17 +10,7 @@ import Foundation
 /// A classical state, i.e. an array of bits.
 public struct ClassicalState: Hashable, Codable, RawRepresentable, CustomStringConvertible {
     public private(set) var rawValue: [Bool]
-    
-    /// Creates a classical state from the given bits.
-    public init(rawValue: [Bool] = []) {
-        self.rawValue = rawValue
-    }
-    
-    /// Creates a classical state from the given bits.
-    public init(_ rawValue: [Bool]) {
-        self.init(rawValue: rawValue)
-    }
-    
+
     /// The number of bits in the register.
     public var count: Int {
         rawValue.count
@@ -35,6 +25,16 @@ public struct ClassicalState: Hashable, Codable, RawRepresentable, CustomStringC
         String(describing: rawValue)
     }
     
+    /// Creates a classical state from the given bits.
+    public init(rawValue: [Bool] = []) {
+        self.rawValue = rawValue
+    }
+    
+    /// Creates a classical state from the given bits.
+    public init(_ rawValue: [Bool]) {
+        self.init(rawValue: rawValue)
+    }
+
     /// Creates a classical state from the given value with the given number of bits.
     public init(value: Int, count: Int) {
         precondition(value < (1 << count), "\(value) is not representable with \(count) \("bit".pluralized(count))")
