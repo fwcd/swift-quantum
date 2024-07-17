@@ -7,13 +7,17 @@
 
 import Foundation
 
+/// A value with an associated UUID.
 @propertyWrapper
 @dynamicMemberLookup
 public struct Identified<Value>: Identifiable {
+    /// The associated UUID.
     public let id: UUID
+    /// The wrapped value.
     public var wrappedValue: Value
     
-    /// A synonym for wrappedValue to disambiguate when accessed through a `Binding`.
+    /// A synonym for wrappedValue to disambiguate when accessed e.g. through a
+    /// SwiftUI `Binding`.
     public var identifiedValue: Value {
         get { wrappedValue }
         set { wrappedValue = newValue }
