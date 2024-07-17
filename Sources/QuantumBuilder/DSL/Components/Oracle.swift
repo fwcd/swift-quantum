@@ -9,6 +9,23 @@ public struct Oracle: QuantumTransformationExpressionComponent {
         self.wrappedOracle = wrappedOracle
     }
 
+    public init(
+        type: QuantumOracleType = .standard,
+        name: String = "f",
+        values: [[Bool]]
+    ) {
+        self.init(.init(type: type, name: name, values: values))
+    }
+
+    public init(
+        type: QuantumOracleType = .standard,
+        name: String = "f",
+        _ inputBitCount: Int,
+        _ function: (ClassicalState) -> ClassicalState
+    ) {
+        self.init(.init(type: type, name: name, inputBitCount, function))
+    }
+
     public init<each B, each C>(
         type: QuantumOracleType = .standard,
         name: String = "f",
