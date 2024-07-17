@@ -51,4 +51,5 @@ jobs:
 
     steps:
     - name: Deploy Docs
-      uses: actions/deploy-pages@v2
+      id: deployment
+      uses: actions/deploy-pages@v4
