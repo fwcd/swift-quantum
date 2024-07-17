@@ -9,9 +9,9 @@ func deutschJosza<each B: BoolConvertible>(_ f: (repeat each B) -> Bool) throws 
     let n = inputCount(of: f)
 
     let result = try QuantumProgram {
-        Hadamard().kronPow(n)
+        Hadamard(n)
         Oracle(type: .plusMinus, f)
-        Hadamard().kronPow(n)
+        Hadamard(n)
         Measure()
     }.measuredState(for: .zero(count: n))
 

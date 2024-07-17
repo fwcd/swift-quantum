@@ -7,14 +7,14 @@ func grover<each B: BoolConvertible>(_ f: (repeat each B) -> Bool) throws -> Cla
     let rounds = Int((.pi / (4 * theta) - 0.5).rounded())
 
     let result = try QuantumProgram {
-        Hadamard().kronPow(n)
+        Hadamard(n)
         for _ in 0..<rounds {
             // Reflect around |+^n>
-            Hadamard().kronPow(n)
+            Hadamard(n)
             Oracle(type: .plusMinus, n) {
                 [$0.value != 0]
             }
-            Hadamard().kronPow(n)
+            Hadamard(n)
             // Reflect through |a>
             Oracle(type: .plusMinus, f)
         }
