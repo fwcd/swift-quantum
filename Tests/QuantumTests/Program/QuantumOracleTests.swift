@@ -14,5 +14,18 @@ final class QuantumOracleTests: XCTestCase {
         XCTAssertEqual(QuantumOracle { $0 && $1 }.values, [[false], [false], [false], [true]])
         XCTAssertEqual(QuantumOracle { (b: Bool, c: Bool) in (b, c) }.values, [[false, false], [false, true], [true, false], [true, true]])
     }
+
+    func testStandardEncoding() {
+        assert(Matrix(QuantumOracle { $0 && $1 }), equals: [
+            [1, 0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 0, 1, 0],
+        ])
+    }
 }
 
