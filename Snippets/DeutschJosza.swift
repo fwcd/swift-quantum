@@ -5,16 +5,18 @@ enum FunctionKind: Hashable {
     case constant
 }
 
-func deutschJosza(_ f: (Bool, Bool, Bool) -> Bool) throws -> FunctionKind {
-    let program = QuantumProgram {
-        Hadamard().kronPow(3)
+func deutschJosza<each B: BoolConvertible>(_ f: (repeat each B) -> Bool) throws -> FunctionKind {
+    let n = inputCount(of: f)
+
+    let result = try QuantumProgram {
+        Hadamard().kronPow(n)
         Oracle(type: .plusMinus, f)
-        Hadamard().kronPow(3)
+        Hadamard().kronPow(n)
         Measure()
-    }
-    let result = try program.measuredState(for: [false, false, false])
+    }.measuredState(for: ClassicalState(repeating: false, count: n))
+
     return result.value == 0 ? .constant : .balanced
 }
 
-print(try deutschJosza { _, _, _ in true })
-print(try deutschJosza { _, _, b in b })
+print(try deutschJosza { (_: Bool) in true })
+print(try deutschJosza { (_: Bool, _: Bool, b) in b })

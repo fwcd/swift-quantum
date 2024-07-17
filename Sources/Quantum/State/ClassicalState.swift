@@ -35,6 +35,11 @@ public struct ClassicalState: Hashable, Codable, RawRepresentable, CustomStringC
         self.init(rawValue: rawValue)
     }
 
+    /// Creates a classical state repeating the given bit.
+    public init(repeating bit: Bool, count: Int) {
+        self.init(Array(repeating: bit, count: count))
+    }
+
     /// Creates a classical state from the given value with the given number of bits.
     public init(value: Int, count: Int) {
         precondition(value < (1 << count), "\(value) is not representable with \(count) \("bit".pluralized(count))")
