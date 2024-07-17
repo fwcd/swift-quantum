@@ -1,8 +1,6 @@
 import QuantumBuilder
 import Foundation
 
-import SwiftUI
-
 func grover<each B: BoolConvertible>(_ f: (repeat each B) -> Bool) throws -> ClassicalState {
     let n = inputCount(of: f)
     let theta = acos(1 - 1 / Double(1 << n))
