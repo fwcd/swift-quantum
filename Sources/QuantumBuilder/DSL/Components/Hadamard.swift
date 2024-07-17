@@ -1,7 +1,11 @@
 public struct Hadamard: QuantumTransformationExpressionComponent {
-    public var expression: QuantumTransformationExpression {
-        .hadamard
+    public let expression: QuantumTransformationExpression
+
+    public init() {
+        expression = .hadamard
     }
 
-    public init() {}
+    public init(_ n: Int) {
+        expression = .kronPow(.hadamard, n)
+    }
 }

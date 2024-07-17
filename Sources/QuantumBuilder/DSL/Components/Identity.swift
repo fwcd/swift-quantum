@@ -1,7 +1,11 @@
 public struct Identity: QuantumTransformationExpressionComponent {
-    public var expression: QuantumTransformationExpression {
-        .identity
+    public let expression: QuantumTransformationExpression
+
+    public init() {
+        expression = .identity
     }
 
-    public init() {}
+    public init(_ n: Int) {
+        expression = .kronPow(.identity, n)
+    }
 }
