@@ -14,6 +14,8 @@ The library is split into two modules:
 
 ## Example
 
+A simple coin flip that outputs `true` or `false` with equal probability can be implemented as follows:
+
 ```swift
 import QuantumBuilder
 
