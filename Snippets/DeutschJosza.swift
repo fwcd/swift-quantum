@@ -13,7 +13,7 @@ func deutschJosza<each B: BoolConvertible>(_ f: (repeat each B) -> Bool) throws 
         Oracle(type: .plusMinus, f)
         Hadamard().kronPow(n)
         Measure()
-    }.measuredState(for: ClassicalState(repeating: false, count: n))
+    }.measuredState(for: .zero(count: n))
 
     return result.value == 0 ? .constant : .balanced
 }
