@@ -7,12 +7,11 @@ extension QuantumOracle {
     /// We use Swift 5.9 variadic generics here. Unfortunately same type
     /// constraints (e.g. `each B == Bool`) are not supported yet (at least in
     /// 5.9), so we use the ``BoolConvertible`` protocol as a workaround.
-    public init<each B, each C>(
+    public init<each B: BoolConvertible, each C: BoolConvertible>(
         type: QuantumOracleType = .standard,
         name: String = "f",
         _ function: (repeat each B) -> (repeat each C)
-    ) where repeat each B: BoolConvertible,
-            repeat each C: BoolConvertible {
+     ) {
         let inputBitCount = inputCount(of: function)
 
         var allValues: [[Bool]] = []
