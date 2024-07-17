@@ -39,6 +39,6 @@ The representation of classical and quantum states. This is a high-level wrapper
 
 General utilities that are used in the public API of this library.
 
-- ``BooleanIsomorphic``
+- ``BoolConvertible``
 - ``Identified``
 - ``LaTeXConvertible``

@@ -6,7 +6,7 @@ final class QuantumOracleTests: XCTestCase {
         // Unfortunately, the lack of same-type constraints in Swift 5.9's variadic generics
         // poses some problems for type-inference, so we have to specify `Bool` explicitly.
         // This might get better with https://github.com/swiftlang/swift/pull/70227, with
-        // which we could just replace `BooleanIsomorphic` fully (hopefully?)
+        // which we could just replace `BoolConvertible` fully (hopefully?)
 
         XCTAssertEqual(QuantumOracle { () }.values, [[]])
         XCTAssertEqual(QuantumOracle { (b: Bool) in b }.values, [[false], [true]])

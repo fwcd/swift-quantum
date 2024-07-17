@@ -1,5 +1,5 @@
 /// A protocol for types that are isomorphic to ``Bool``.
-public protocol BooleanIsomorphic {
+public protocol BoolConvertible {
     /// The representation of the value as ``Bool``.
     var booleanValue: Bool { get set }
 
@@ -7,7 +7,7 @@ public protocol BooleanIsomorphic {
     init(booleanValue: Bool)
 }
 
-extension Bool: BooleanIsomorphic {
+extension Bool: BoolConvertible {
     public var booleanValue: Bool {
         get { self }
         set { self = newValue }

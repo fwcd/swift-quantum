@@ -13,8 +13,8 @@ public struct Oracle: QuantumTransformationExpressionComponent {
         type: QuantumOracleType = .standard,
         name: String = "f",
         _ function: (repeat each B) -> (repeat each C)
-    ) where repeat each B: BooleanIsomorphic,
-            repeat each C: BooleanIsomorphic {
+    ) where repeat each B: BoolConvertible,
+            repeat each C: BoolConvertible {
         self.init(.init(type: type, name: name, function))
     }
 }
