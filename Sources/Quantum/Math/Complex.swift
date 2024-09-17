@@ -8,7 +8,7 @@
 import Foundation
 
 /// A complex number, internally represented with two doubles.
-public struct Complex: Hashable, Codable {
+public struct Complex: Hashable, Codable, Sendable {
     public var real: Double
     public var imag: Double
     

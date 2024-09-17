@@ -6,7 +6,7 @@
 //
 
 /// A matrix of complex numbers.
-public struct Matrix: Hashable, Codable, RawRepresentable {
+public struct Matrix: Hashable, Codable, Sendable, RawRepresentable {
     public private(set) var rawValue: [[Complex]] {
         didSet {
             checkInvariants()
