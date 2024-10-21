@@ -1,19 +1,21 @@
-import XCTest
+import Testing
 import Quantum
 
-final class QuantumTransformationExpressionTests: XCTestCase {
-    func testLaTeX() {
-        let cases: [(QuantumTransformationExpression, String, UInt)] = [
-            (.x, "X", #line),
-            (.y, "Y", #line),
-            (.z, "Z", #line),
-            (.kronPow(.hadamard, 3), "{H}^{\\otimes 3}", #line),
-            (.kronPow(.kron(.x, .hadamard), 3), "{(X \\otimes H)}^{\\otimes 3}", #line),
-            (.hadamard, "H", #line),
+class QuantumTransformationExpressionTests {
+    @Test func laTeX() {
+        // TODO: Parameterized test
+
+        let cases: [(QuantumTransformationExpression, String, SourceLocation)] = [
+            (.x, "X", #_sourceLocation),
+            (.y, "Y", #_sourceLocation),
+            (.z, "Z", #_sourceLocation),
+            (.kronPow(.hadamard, 3), "{H}^{\\otimes 3}", #_sourceLocation),
+            (.kronPow(.kron(.x, .hadamard), 3), "{(X \\otimes H)}^{\\otimes 3}", #_sourceLocation),
+            (.hadamard, "H", #_sourceLocation),
         ]
 
-        for (expr, latex, line) in cases {
-            XCTAssertEqual(expr.latex, latex, line: line)
+        for (expr, latex, sourceLocation) in cases {
+            #expect(expr.latex == latex, sourceLocation: sourceLocation)
         }
     }
 }

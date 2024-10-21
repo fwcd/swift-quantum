@@ -1,13 +1,13 @@
-import XCTest
+import Testing
 import QuantumBuilder
 
-final class QuantumBuilderTests: XCTestCase {
-    func testEmpty() {
-        assert(QuantumProgram {}, equals: [])
+struct QuantumBuilderTests {
+    @Test func empty() {
+        expect(QuantumProgram {}, equals: [])
     }
 
-    func testSimpleProgram() {
-        assert(QuantumProgram {
+    @Test func simpleProgram() {
+        expect(QuantumProgram {
             Hadamard()
             Measure()
         }, equals: [
@@ -16,8 +16,8 @@ final class QuantumBuilderTests: XCTestCase {
         ])
     }
 
-    func testSimpleKronExpressions() {
-        assert(QuantumProgram {
+    @Test func simpleKronExpressions() {
+        expect(QuantumProgram {
             Kron {
                 Hadamard()
                 Identity().kronPow(2)

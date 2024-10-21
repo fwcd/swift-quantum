@@ -1,6 +1,6 @@
-import XCTest
+import Testing
 import QuantumBuilder
 
-func assert(_ lhs: QuantumProgram, equals rhs: QuantumProgram, file: StaticString = #file, line: UInt = #line) {
-    XCTAssertEqual(lhs.operations.map(\.identifiedValue), rhs.operations.map(\.identifiedValue), file: file, line: line)
+func expect(_ lhs: QuantumProgram, equals rhs: QuantumProgram, sourceLocation: SourceLocation = #_sourceLocation) {
+    #expect(lhs.operations.map(\.identifiedValue) == rhs.operations.map(\.identifiedValue), sourceLocation: sourceLocation)
 }

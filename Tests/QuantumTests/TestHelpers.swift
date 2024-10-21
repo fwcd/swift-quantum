@@ -5,29 +5,33 @@
 //  Created on 13.06.24
 //
 
-import XCTest
+import Testing
 import Quantum
 
-private let epsilon = 0.00001
-
-func assert(_ lhs: Complex, equals rhs: Complex, _ message: String? = nil, file: StaticString = #file, line: UInt = #line) {
-    XCTAssertEqual(lhs.real, rhs.real, accuracy: epsilon, message ?? "Re(\(lhs)) != Re(\(rhs))", file: file, line: line)
-    XCTAssertEqual(lhs.imag, rhs.imag, accuracy: epsilon, message ?? "Im(\(lhs)) != Im(\(rhs))", file: file, line: line)
+extension Double {
+    func isApproximatelyEqual(to other: Self, accuracy: Double = 0.0001) -> Bool {
+        abs(self - other) < accuracy
+    }
 }
 
-func assert(_ lhs: Matrix, equals rhs: Matrix, file: StaticString = #file, line: UInt = #line) {
-    XCTAssertEqual(lhs.width, rhs.width, "Left height != right height", file: file, line: line)
-    XCTAssertEqual(lhs.height, rhs.height, "Left width != right width", file: file, line: line)
+func expect(_ lhs: Complex, equals rhs: Complex, _ message: String? = nil, sourceLocation: SourceLocation = #_sourceLocation) {
+    #expect(lhs.real.isApproximatelyEqual(to: rhs.real), "\(message ?? "Re(\(lhs)) != Re(\(rhs))")", sourceLocation: sourceLocation)
+    #expect(lhs.imag.isApproximatelyEqual(to: rhs.imag), "\(message ?? "Im(\(lhs)) != Im(\(rhs))")", sourceLocation: sourceLocation)
+}
+
+func expect(_ lhs: Matrix, equals rhs: Matrix, sourceLocation: SourceLocation = #_sourceLocation) {
+    #expect(lhs.width == rhs.width, "Left height != right height", sourceLocation: sourceLocation)
+    #expect(lhs.height == rhs.height, "Left width != right width", sourceLocation: sourceLocation)
     for i in 0..<lhs.height {
         for j in 0..<lhs.width {
-            assert(lhs[i, j], equals: rhs[i, j], "Element at \(i), \(j) does not match", line: line)
+            expect(lhs[i, j], equals: rhs[i, j], "Element at \(i), \(j) does not match", sourceLocation: sourceLocation)
         }
     }
 }
 
-func assert(_ lhs: Vector, equals rhs: Vector, file: StaticString = #file, line: UInt = #line) {
-    XCTAssertEqual(lhs.count, rhs.count, "Left count != right count", file: file, line: line)
+func expect(_ lhs: Vector, equals rhs: Vector, sourceLocation: SourceLocation = #_sourceLocation) {
+    #expect(lhs.count == rhs.count, "Left count != right count", sourceLocation: sourceLocation)
     for i in 0..<lhs.count {
-        assert(lhs[i], equals: rhs[i], "Element at \(i) does not match", file: file, line: line)
+        expect(lhs[i], equals: rhs[i], "Element at \(i) does not match", sourceLocation: sourceLocation)
     }
 }
