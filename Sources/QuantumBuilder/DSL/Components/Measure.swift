@@ -1,4 +1,4 @@
-public struct Measure: QuantumProgramComponent {
+public struct Measure: QuantumProgramComponent, Sendable {
     public var program: QuantumProgram {
         [.init(.measure)]
     }

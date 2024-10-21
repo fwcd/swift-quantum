@@ -1,5 +1,5 @@
 @resultBuilder
-public struct QuantumProgramBuilder {
+public struct QuantumProgramBuilder: Sendable {
     private init() {}
 
     // We use Swift 5.9's variadic generics here (parameter packs)

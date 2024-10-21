@@ -8,7 +8,7 @@
 import Foundation
 
 /// A vector of complex numbers.
-public struct Vector: Hashable, Codable, RawRepresentable {
+public struct Vector: Hashable, Codable, Sendable, RawRepresentable {
     public private(set) var rawValue: [Complex]
     
     /// The number of elements in the vector, i.e. the dimension.

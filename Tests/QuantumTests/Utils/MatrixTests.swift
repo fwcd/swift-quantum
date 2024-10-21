@@ -5,24 +5,24 @@
 //  Created on 13.06.24
 //
 
-import XCTest
+import Testing
 import Quantum
 
-final class MatrixTests: XCTestCase {
-    func testZero() {
-        assert(.zero(3, 3), equals: [
+struct MatrixTests {
+    @Test func zero() {
+        expect(.zero(3, 3), equals: [
             [0, 0, 0],
             [0, 0, 0],
             [0, 0, 0],
         ])
-        assert(.zero(2, 4), equals: [
+        expect(.zero(2, 4), equals: [
             [0, 0, 0, 0],
             [0, 0, 0, 0],
         ])
     }
 
-    func testTranspose() {
-        assert(Matrix([
+    @Test func transpose() {
+        expect(Matrix([
             [1, 2, 3],
             [4, 5, 6],
         ]).transpose, equals: [
@@ -32,19 +32,19 @@ final class MatrixTests: XCTestCase {
         ])
     }
     
-    func testIdentity() {
-        assert(.identity(1), equals: [
+    @Test func identity() {
+        expect(.identity(1), equals: [
             [1],
         ])
-        assert(.identity(3), equals: [
+        expect(.identity(3), equals: [
             [1, 0, 0],
             [0, 1, 0],
             [0, 0, 1],
         ])
     }
     
-    func testArithmetic() {
-        assert(Matrix([
+    @Test func arithmetic() {
+        expect(Matrix([
             [1, 2],
             [3, 4],
         ]) + Matrix([
@@ -55,7 +55,7 @@ final class MatrixTests: XCTestCase {
             [8, 8],
         ])
         
-        assert(Matrix([
+        expect(Matrix([
             [1, 2],
             [3, 4],
         ]) - Matrix([
@@ -66,7 +66,7 @@ final class MatrixTests: XCTestCase {
             [-2, 0],
         ])
         
-        assert(Matrix([
+        expect(Matrix([
             [-1, 2],
             [-4, -3],
         ]) * Complex.i, equals: [
@@ -74,7 +74,7 @@ final class MatrixTests: XCTestCase {
             [-4 * .i, -3 * .i],
         ])
         
-        assert(Complex.i * Matrix([
+        expect(Complex.i * Matrix([
             [-1, 2],
             [-4, -3],
         ]), equals: [
@@ -83,8 +83,8 @@ final class MatrixTests: XCTestCase {
         ])
     }
     
-    func testMatrixMultiplication() {
-        assert(Matrix([
+    @Test func matrixMultiplication() {
+        expect(Matrix([
             [1, 2, 3],
             [4, 5, 6],
         ]) * Matrix([
@@ -97,8 +97,8 @@ final class MatrixTests: XCTestCase {
         ])
     }
     
-    func testKroneckerProduct() {
-        assert(Matrix([
+    @Test func kroneckerProduct() {
+        expect(Matrix([
             [1, 2],
             [3, 4]
         ]).kron(Matrix([
@@ -112,13 +112,13 @@ final class MatrixTests: XCTestCase {
         ])
     }
     
-    func testKroneckerExponentiation() {
+    @Test func kroneckerExponentiation() {
         let a: Matrix = [
             [1, 2],
             [3, 4]
         ]
-        assert(a.kronPow(1), equals: a)
-        assert(a.kronPow(2), equals: a.kron(a))
-        assert(a.kronPow(3), equals: a.kron(a).kron(a))
+        expect(a.kronPow(1), equals: a)
+        expect(a.kronPow(2), equals: a.kron(a))
+        expect(a.kronPow(3), equals: a.kron(a).kron(a))
     }
 }

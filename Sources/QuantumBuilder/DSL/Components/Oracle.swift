@@ -1,4 +1,4 @@
-public struct Oracle: QuantumTransformationExpressionComponent {
+public struct Oracle: QuantumTransformationExpressionComponent, Sendable {
     public var expression: QuantumTransformationExpression {
         .oracle(wrappedOracle)
     }

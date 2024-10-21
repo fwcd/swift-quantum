@@ -1,5 +1,5 @@
 /// An encoding of a classical function as quantum transformation.
-public struct QuantumOracle: Codable, Hashable, LaTeXConvertible {
+public struct QuantumOracle: Codable, Hashable, Sendable, LaTeXConvertible {
     /// The type of encoding, determining how a quantum transformation should be derived.
     public var type: QuantumOracleType
     /// The name of the function, for formatting purposes.

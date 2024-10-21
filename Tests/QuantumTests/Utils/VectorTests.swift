@@ -6,18 +6,17 @@
 //
 
 import Foundation
-
-import XCTest
+import Testing
 import Quantum
 
-final class VectorTests: XCTestCase {
-    func testZero() {
-        assert(.zero(count: 3), equals: [0, 0, 0])
-        assert(.zero(count: 4), equals: [0, 0, 0, 0])
+struct VectorTests {
+    @Test func zero() {
+        expect(.zero(count: 3), equals: [0, 0, 0])
+        expect(.zero(count: 4), equals: [0, 0, 0, 0])
     }
     
-    func testMatrixMultiplication() {
-        assert(Matrix([
+    @Test func matrixMultiplication() {
+        expect(Matrix([
             [1, 2, 3],
             [4, 5, 6],
         ]) * Vector([
@@ -30,7 +29,7 @@ final class VectorTests: XCTestCase {
         ])
     }
     
-    func testKroneckerProduct() {
-        assert(Vector([1, 2]).kron(Vector([3, 4])), equals: [3, 4, 6, 8])
+    @Test func kroneckerProduct() {
+        expect(Vector([1, 2]).kron(Vector([3, 4])), equals: [3, 4, 6, 8])
     }
 }
