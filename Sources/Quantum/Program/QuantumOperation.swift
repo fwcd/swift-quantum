@@ -6,7 +6,7 @@
 //
 
 /// A step in a quantum program.
-public enum QuantumOperation: Hashable, Codable {
+public enum QuantumOperation: Hashable, Codable, Sendable {
     case transform(QuantumTransformationExpression)
     case measure
     

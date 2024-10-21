@@ -1,4 +1,4 @@
-public struct Scale: QuantumTransformationExpressionComponent {
+public struct Scale: QuantumTransformationExpressionComponent, Sendable {
     public let expression: QuantumTransformationExpression
 
     public init(

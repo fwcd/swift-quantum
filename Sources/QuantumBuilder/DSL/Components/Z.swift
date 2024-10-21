@@ -1,4 +1,4 @@
-public struct Z: QuantumTransformationExpressionComponent {
+public struct Z: QuantumTransformationExpressionComponent, Sendable {
     public var expression: QuantumTransformationExpression {
         .z
     }

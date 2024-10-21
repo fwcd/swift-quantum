@@ -1,6 +1,6 @@
 /// The type of encoding, determining how a classical function should be turned
 /// into a quantum transformation (i.e. a unitary transformation).
-public enum QuantumOracleType: Codable, Hashable {
+public enum QuantumOracleType: Codable, Hashable, Sendable {
     /// The standard encoding. Operates on n + m bits.
     ///
     /// This encodes `f: {0, 1}^n -> {0, 1}^m` as `O(|b> |c>) = |b> |c XOR f(b)>`.

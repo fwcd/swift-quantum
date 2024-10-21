@@ -1,4 +1,4 @@
-public struct Hadamard: QuantumTransformationExpressionComponent {
+public struct Hadamard: QuantumTransformationExpressionComponent, Sendable {
     public let expression: QuantumTransformationExpression
 
     public init() {

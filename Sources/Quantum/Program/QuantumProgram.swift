@@ -6,7 +6,7 @@
 //
 
 /// A list of quantum operations forming a quantum program.
-public struct QuantumProgram: Hashable, Codable {
+public struct QuantumProgram: Hashable, Codable, Sendable {
     public var operations: [Identified<QuantumOperation>]
     
     public init(operations: [Identified<QuantumOperation>] = []) {

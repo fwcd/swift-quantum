@@ -8,7 +8,7 @@
 import Foundation
 
 /// An expression representing a quantum state transformation.
-public indirect enum QuantumTransformationExpression: Hashable, Codable, LaTeXConvertible {
+public indirect enum QuantumTransformationExpression: Hashable, Codable, Sendable, LaTeXConvertible {
     case identity
     case hadamard
     case x

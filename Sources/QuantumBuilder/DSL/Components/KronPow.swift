@@ -1,4 +1,4 @@
-public struct KronPow: QuantumTransformationExpressionComponent {
+public struct KronPow: QuantumTransformationExpressionComponent, Sendable {
     public let expression: QuantumTransformationExpression
 
     public init(
