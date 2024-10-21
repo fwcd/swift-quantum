@@ -18,7 +18,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: swift-actions/setup-swift@v2
+    # https://github.com/swift-actions/setup-swift/pull/684
+    - uses: swift-actions/setup-swift@736b146b8f26e7a66cbe3a89bc8d413ac0ea536e
       with:
         swift-version: ${{ matrix.swift }}
     - name: Build
